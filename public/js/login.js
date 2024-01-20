@@ -5,7 +5,7 @@ const login = async (email, password) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://localhost:8000/api/v1/users/login', // 添加 http://
+      url: '/api/v1/users/login',
       data: {
         email,
         password,
@@ -30,7 +30,7 @@ const logout = async () => {
   try {
     const res = await axios({
       method: 'GET',
-      url: 'http://localhost:8000/api/v1/users/logout',
+      url: '/api/v1/users/logout',
     });
     if (res.data.status === 'success') location.reload(true);
   } catch (err) {
@@ -46,8 +46,8 @@ const updateSettings = async (data, type) => {
   try {
     const url =
       type === 'password'
-        ? 'http://localhost:8000/api/v1/users/updateMyPassword'
-        : 'http://localhost:8000/api/v1/users/updateMe';
+        ? '/v1/users/updateMyPassword'
+        : '/api/v1/users/updateMe';
     const res = await axios({
       method: 'PATCH',
       url,
